@@ -1,10 +1,21 @@
 package main
 
 import (
-	"github.com/sbueringer/test/pkg"
+	"github.com/spf13/cobra"
 )
 
+var rootCmd = &cobra.Command{
+	Use:   "test",
+	Short: "test",
+	Long:  ``,
+}
 
-func main(){
-	pkg.Test()
+func main() {
+
+	rootCmd.Execute()
+}
+
+func init() {
+	rootCmd.PersistentFlags().StringP("test", "t", "", "descr")
+
 }

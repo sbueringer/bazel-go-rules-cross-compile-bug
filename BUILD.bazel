@@ -14,11 +14,20 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/sbueringer/test",
     visibility = ["//visibility:private"],
-    deps = ["//pkg:go_default_library"],
+    deps = ["//vendor/github.com/spf13/cobra:go_default_library"],
 )
 
 go_binary(
     name = "test",
     embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
+
+go_binary(
+    name = "test_windows",
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "windows",
+    pure = "on",
     visibility = ["//visibility:public"],
 )
